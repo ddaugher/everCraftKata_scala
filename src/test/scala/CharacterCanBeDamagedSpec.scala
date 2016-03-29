@@ -5,36 +5,49 @@ class CharacterCanBeDamagedSpec extends FlatSpec with Matchers {
     val character = new Character("TOM")
     val opponent = new Character("OPPONENT")
 
-    opponent.hitPoints = 10
+    opponent._hitPoints = 10
     val roll: Int = 15
 
     character.attack(opponent, roll)
 
-    9 should ===(opponent.hitPoints)
+    9 should ===(opponent._hitPoints)
   }
 
   "Character" should "incur 2 points of damage when a natural 20 is rolled" in {
     val character = new Character("TOM")
     val opponent = new Character("OPPONENT")
 
-    opponent.hitPoints = 10
+    opponent._hitPoints = 10
     val roll: Int = 20
 
     character.attack(opponent, roll)
 
-    8 should ===(opponent.hitPoints)
+    8 should ===(opponent._hitPoints)
   }
 
-  "Character" should "DIE when hitPoints equals zero" in {
+  "Character" should "ALIVE when _hitPoints greater than 0" in {
     val character = new Character("TOM")
     val opponent = new Character("OPPONENT")
 
-    opponent.hitPoints = 0
-    0 should ===(opponent.hitPoints)
-    DEAD should ===(opponent.status)
+    opponent._hitPoints = 1
+    1 should ===(opponent._hitPoints)
+    Alive should ===(opponent.status)
   }
 
+  "Character" should "DIE when _hitPoints equals zero" in {
+    val character = new Character("TOM")
+    val opponent = new Character("OPPONENT")
 
-//  If a roll is a natural 20 then a critical hit is dealt and the damage is doubled
-//    when hit points are 0 or less, the character is dead
+    opponent._hitPoints = 0
+    0 should ===(opponent._hitPoints)
+    Dead should ===(opponent.status)
+  }
+
+  "Character" should "not be allowed to have a negative hit points" in {
+    val character = new Character("TOM")
+    val opponent = new Character("OPPONENT")
+
+    opponent.hitPoints(-1)
+    0 should ===(opponent._hitPoints)
+  }
 }
