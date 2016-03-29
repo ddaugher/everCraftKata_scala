@@ -13,4 +13,10 @@ class CharacterSpec extends FlatSpec with Matchers {
     Neutral should === (c.alignment)
   }
 
+  "Character" must "allow the alignment to be set after creation" in {
+    val c = new Character("TOM")
+
+    c.alignment = Good
+    Good should ===(c.alignment)
+  }
 }
