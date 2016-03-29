@@ -5,9 +5,16 @@ class Character(private val _name: String) {
   var armorClass: Int = 10
   var hitPoints: Int = 5
 
+//    def hitPoints: Int = {
+//        hitPoints
+//      }
+
   def attack(opponent: Character, roll: Int): Attack = {
 
-    if (roll >= opponent.hitPoints) return Hit
+    if (roll >= opponent.hitPoints) {
+      opponent.hitPoints = opponent.hitPoints - 1
+      return Hit
+    }
     Miss
   }
 }
