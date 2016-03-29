@@ -19,4 +19,10 @@ class CharacterSpec extends FlatSpec with Matchers {
     c.alignment = Good
     Good should ===(c.alignment)
   }
+
+  "Character" should "have a default armor class value of 10" in {
+    val c = new Character("TOM")
+
+    10 should ===(c.armorClass)
+  }
 }
