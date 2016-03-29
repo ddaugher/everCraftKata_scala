@@ -6,7 +6,7 @@ class Character(private val _name: String) {
   var hitPoints: Int = 5
 
   def attack(opponent: Character, roll: Int): Attack = {
-    if (roll > opponent.hitPoints) return Hit
+    if (roll >= opponent.hitPoints) return Hit
     Miss
   }
 }
