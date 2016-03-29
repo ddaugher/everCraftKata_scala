@@ -25,4 +25,10 @@ class CharacterSpec extends FlatSpec with Matchers {
 
     10 should ===(c.armorClass)
   }
+
+  "Character" should "have a default hit point value of 5" in {
+    val c = new Character("TOM")
+
+    5 should ===(c.hitPoints)
+  }
 }
