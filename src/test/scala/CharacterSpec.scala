@@ -6,4 +6,11 @@ class CharacterSpec extends FlatSpec with Matchers {
 
     "TOM" should === (c.name)
   }
+
+  "Character" should "default to Neutral" in {
+    val c = new Character("TOM")
+
+    Neutral should === (c.alignment)
+  }
+
 }
