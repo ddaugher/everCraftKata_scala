@@ -12,7 +12,7 @@ class Character(private val _name: String) {
   def attack(opponent: Character, roll: Int): Attack = {
 
     if (roll >= opponent.hitPoints) {
-      opponent.hitPoints = opponent.hitPoints - 1
+      opponent.hitPoints -= 1
       return Hit
     }
     Miss
