@@ -25,6 +25,15 @@ class CharacterCanBeDamagedSpec extends FlatSpec with Matchers {
     8 should ===(opponent.hitPoints)
   }
 
+  "Character" should "DIE when hitPoints equals zero" in {
+    val character = new Character("TOM")
+    val opponent = new Character("OPPONENT")
+
+    opponent.hitPoints = 0
+    0 should ===(opponent.hitPoints)
+    DEAD should ===(opponent.status)
+  }
+
 
 //  If a roll is a natural 20 then a critical hit is dealt and the damage is doubled
 //    when hit points are 0 or less, the character is dead
